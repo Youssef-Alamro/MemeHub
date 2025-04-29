@@ -1,0 +1,368 @@
+:root {
+    --primary-color: #ff6b6b;
+    --secondary-color: #4ecdc4;
+    --dark-color: #292f36;
+    --light-color: #f7fff7;
+    --accent-color: #ff9f1c;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --bg-color: #f5f5f5;
+    --text-color: #292f36;
+    --header-bg: #fff;
+    --card-bg: #fff;
+    --button-text: #333;
+    --button-bg: #f0f0f0;
+    --button-border: #ddd;
+}
+
+[data-dark-mode="true"] {
+    --bg-color: #121212;
+    --text-color: #f5f5f5;
+    --header-bg: #1e1e1e;
+    --card-bg: #2d2d2d;
+    --dark-color: #f5f5f5;
+    --light-color: #292f36;
+    --button-text: #f5f5f5;
+    --button-bg: #2d2d2d;
+    --button-border: #444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+header {
+    background-color: var(--header-bg);
+    padding: 15px 30px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background-color 0.5s ease;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.profile-btn:hover {
+    background-color: #ff5252;
+    transform: translateY(-2px);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#searchBar {
+    padding: 10px 15px;
+    border: 2px solid var(--button-border);
+    border-radius: 25px;
+    font-size: 16px;
+    width: 300px;
+    transition: var(--transition);
+    background-color: var(--header-bg);
+    color: var(--text-color);
+}
+
+#searchBar:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+}
+
+/* Button styles */
+.button-container {
+    position: relative;
+    display: inline-block;
+}
+
+.button-shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 25px;
+    background: rgba(0,0,0,0.1);
+    filter: blur(5px);
+    z-index: 1;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.header-btn {
+    position: relative;
+    z-index: 2;
+    all: unset;
+    cursor: pointer;
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-btn i {
+    font-size: 14px;
+}
+
+#postMemeBtn {
+    background: linear-gradient(to right, #ff9f1c, #ffbf69);
+    color: white;
+}
+
+#postMemeBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+#searchBtn {
+    background: linear-gradient(to right, #4ecdc4, #88d8d0);
+    color: white;
+}
+
+#logoutBtn {
+    background: linear-gradient(to right, #ff6b6b, #ff8e8e);
+    color: white;
+}
+
+main {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.meme-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.meme-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.meme-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.meme-content {
+    padding: 20px;
+}
+
+.meme-user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.user-name {
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.user-name:hover {
+    color: var(--primary-color);
+}
+
+.meme-text {
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+.like-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.like-btn {
+    background: none;
+    border: none;
+    color: #777;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.like-btn:hover {
+    color: var(--primary-color);
+}
+
+.like-btn.liked {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.like-count {
+    font-size: 14px;
+    color: #777;
+}
+
+.empty-message, .loading-message, .error-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    color: var(--text-color);
+}
+
+/* Dark Mode Toggle Styles */
+.controls {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: sans-serif;
+    color: var(--text-color);
+    transition: color 0.5s ease;
+}
+
+[type=checkbox] {
+    accent-color: var(--text-color);
+    transition: accent-color 0.5s ease;
+}
+
+.toggle {
+    -webkit-tap-highlight-color: transparent;
+    width: 60px;
+    height: 30px;
+    border-radius: 100vh;
+    border: 0;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    --sky: hsl(204, 53%, 47%);
+    --night: hsl(229, 25%, 16%);
+    outline-color: transparent;
+    background: var(--header-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle__indicator {
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background: var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+[aria-pressed="true"] .toggle__indicator {
+    transform: translateX(30px);
+}
+
+.bear-link {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 48px;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.bear-link:hover {
+    opacity: 1;
+}
+
+.bear-link svg {
+    width: 75%;
+    fill: var(--text-color);
+    transition: fill 0.5s ease;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .header-left, .header-right {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #searchBar {
+        width: 100%;
+    }
+
+    .meme-container {
+        grid-template-columns: 1fr;
+    }
+}
